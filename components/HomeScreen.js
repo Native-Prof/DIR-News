@@ -4,7 +4,7 @@ import NewsCard from './NewsCard'
 // import Search from './Search'
 import Feather from 'react-native-vector-icons/Fontisto';
 import Search from 'react-native-vector-icons/Feather';
-import { Navigation } from 'react-native-feather';
+
 
 // import Nav from './component/Nav'
 export default function HomeScreen({ navigation }) {

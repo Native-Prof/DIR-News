@@ -29,7 +29,7 @@ export default function App() {
           title: '',
           headerShown: true
           , headerLeft: () => (
-            <View style={styles.imageContainer}>
+            <View>
               <Image
                 style={styles.headerLeft}
                 source={{ uri: 'https://www.pngfind.com/pngs/m/55-552671_apple-iphone-clipart-samsung-logo-apple-logo-small.png' }}
@@ -49,10 +49,10 @@ export default function App() {
   );
 }
 
-// const styles = StyleSheet.create({
+const styles = StyleSheet.create({
 
-//   headerLeft: {
-//     width: 50,
-//     height: 20,
-//   },
-// })
+  headerLeft: {
+    width: 50,
+    height: 20,
+  },
+})
