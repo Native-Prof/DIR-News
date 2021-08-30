@@ -15,7 +15,7 @@ export default function App() {
   return (
     <NavigationContainer>
 
-      <Stack.Navigator  screenOptions={{
+      <Stack.Navigator screenOptions={{
         headerStyle: {
           backgroundColor: 'white',
         },
@@ -25,23 +25,7 @@ export default function App() {
         },
       }}>
 
-        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{
-          title: '',
-          headerShown: true
-          , headerLeft: () => (
-            <View>
-              <Image
-                style={styles.headerLeft}
-                source={{ uri: 'https://www.pngfind.com/pngs/m/55-552671_apple-iphone-clipart-samsung-logo-apple-logo-small.png' }}
-              />
-            </View>
-          ),
-          headerRight: () => (
-          <Feather name='search' size={24} color='#dd4141' title="Search"
-          onClick= {<Search/>}
-          ></Feather>
-          ),
-        }}/>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
 
         <Stack.Screen name="Search" component={Search} />
       </Stack.Navigator>
