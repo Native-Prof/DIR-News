@@ -25,7 +25,7 @@ export default function App() {
         },
       }}>
 
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerShown:false}}/>
 
         <Stack.Screen name="Search" component={Search} />
       </Stack.Navigator>

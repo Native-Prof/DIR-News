@@ -1,20 +1,20 @@
 import * as React from 'react';
-import { View, Text, Button, SafeAreaView, StyleSheet, Image, FlatList, Platform, ScrollView } from 'react-native';
+import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet, Image, FlatList, Platform, ScrollView } from 'react-native';
 import NewsCard from './NewsCard'
-// import Search from './Search'
 import Feather from 'react-native-vector-icons/Fontisto';
 import Search from 'react-native-vector-icons/Feather';
+import { Button } from 'react-native-elements';
 
-
-// import Nav from './component/Nav'
 export default function HomeScreen({ navigation }) {
-  const [query, setquery] = React.useState('love')
+  const [query, setquery] = React.useState('love');
+  const [image, setimage] = React.useState('https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg');
+
 
   return (
     <>
       <View style={styles.headerWrapper}>
         <Image style={styles.headerLeft}
-          source={{ uri: 'https://www.pngfind.com/pngs/m/55-552671_apple-iphone-clipart-samsung-logo-apple-logo-small.png' }}
+          source={require('./dir_news_logo2.png')}
         />
         <Search style={styles.headerRight} name='search' size={24} color='#dd4141' title="Search"
           onPress={(event) => navigation.navigate("Search")}
@@ -23,18 +23,13 @@ export default function HomeScreen({ navigation }) {
       <ScrollView>
 
         <View style={styles.container}  >
-
-
-
-
-
           <View style={styles.titleWrapper}>
             <Text style={styles.title}>Stories</Text>
             <View style={styles.slideWrapper}>
-              <Image source={{ uri: 'https://img.pixers.pics/pho_wat(s3:700/FO/19/38/88/41/8/700_FO193888418_498d6a07ca8a75b4d6881e7c1eb76aec,700,467,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,417,jpg)/pillow-covers-andes-region-bolivia-lama-closeup.jpg.jpg' }} style={styles.titleImage} />
+              <Image source={{ uri: image }} style={styles.titleImage} />
               <View style={styles.imageAbsoluteWrapper}>
-                <Feather name='bookmark' size={24} style={styles.featherImage} ></Feather>
-                <Text style={styles.imageDis}>See what happen to this lama before dina take it </Text>
+                {/* <Feather color='white' name='bookmark' size={27} style={styles.featherImage} ></Feather> */}
+                {/* <Text style={styles.imageDis}>See what happen to this lama before dina take it </Text> */}
               </View>
 
             </View>
@@ -48,26 +43,52 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
 
-
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Button title="Search" onPress={(event) => navigation.navigate("Search")} />
-          <Button title="sports" onPress={(event) => {
-            setquery("sports")
-          }} />
-          <Button title=" cars" onPress={(event) => {
-            setquery("cars")
-          }} />
-          <Button title=" music" onPress={(event) => {
-            setquery("music")
-          }} />
-          <Button title=" animals" onPress={
-            (event) => {
-              setquery("animals")
+        <View style={styles.buttons}>
+      
+          <TouchableOpacity
+            style={styles.button}
+            onPress={(event) => {
+              setquery("sports")
+              setimage('https://data.whicdn.com/images/354948607/original.jpg')
             }}
-          />
-          <NewsCard query={query} />
+          >
+            <Text style={styles.buttonStyle}>sports</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={(event) => {
+              setquery("cars")
+              setimage('https://data.whicdn.com/images/356571585/original.jpg')
+            }}
+          >
+            <Text style={styles.buttonStyle}>cars</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={(event) => {
+              setquery("music")
+              setimage('https://data.whicdn.com/images/358007200/original.jpg')
+            }}
+          >
+            <Text style={styles.buttonStyle}>music</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={(event) => {
+              setquery("animals")
+              setimage('https://data.whicdn.com/images/355454238/original.jpg')
+            }}
+          >
+            <Text style={styles.buttonStyle}>animals</Text>
+          </TouchableOpacity>
+
         </View>
-      </ScrollView>
+        <NewsCard query={query} />
+
+      </ScrollView >
     </>
   );
 }
@@ -102,10 +123,20 @@ const styles = StyleSheet.create({
   },
   imageAbsoluteWrapper: {
     position: 'absolute',
-    alignSelf: 'center'
+    justifyContent:'center',
+    alignItems:'center'
   },
   imageDis: {
-    top: 100
+    alignSelf:'center',
+    justifyContent:'center',
+
+    // top: 100,
+    textAlign:'center',
+    backgroundColor:'#e6e1e1cf',
+    width: '102%',
+    height: 300,
+    marginLeft:12,
+    borderRadius: Platform.OS === 'ios' ? 12 : 12
   },
 
   headerWrapper: {
@@ -114,6 +145,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: 'white',
     paddingTop: 40,
+    paddingBottom: 8,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -121,20 +153,39 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-    
+
     elevation: 6,
 
   },
 
   headerLeft: {
-    width: 50,
-    height: 20,
-    paddingBottom:10
+    width: '42%',
+    height: 37,
+    paddingRight:20
   },
 
-  headerRight:{
-    paddingBottom:10
+  buttons: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingTop: 25,
+    justifyContent: 'space-around',
+  },
 
+  button: {
+    alignItems: "center",
+    backgroundColor: 'rgba(249, 249, 249, 0.04)',
+    borderStyle: 'solid',
+    padding: 10,
+    borderWidth: 1,
+    borderRadius: 1,
+    borderColor: '#dd4141'
+  },
+  buttonStyle: {
+    fontSize: 17,
+    color: '#dd4141'
+  },
+  featherImage:{
+    paddingLeft:10,
+    paddingTop:10,
   }
-
 })
