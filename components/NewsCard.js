@@ -9,7 +9,7 @@ function NewsCard(props) {
 
   const fetchNews = async () => {
     try {
-      const news = await fetch(`https://newsapi.org/v2/everything?q=${props.query}&apiKey=a39c18677ad046d7b17177486b4695ef&sortBy=popularity`)
+      const news = await fetch(`https://newsapi.org/v2/everything?q=${props.query}&apiKey=227ab875c1ea4a6097fbb20488e0f52c&sortBy=popularity`)
       const row = await news.json();
       // console.log(row.articles);
       setData(row.articles)
@@ -31,9 +31,10 @@ function NewsCard(props) {
 
   return (
     <ScrollView>
-      <Card.Title style={styles.title}>{props.query}</Card.Title>
+     
+      {/* <Card.Title style={styles.title}>{props.query}</Card.Title> */}
+     
       {data.map((e) => {
-
         return <Card>
           <Card.Title>{e.title}</Card.Title>
           <Card.Divider />
@@ -44,7 +45,7 @@ function NewsCard(props) {
           </Card.Image>
           <Button
             onPress={() => Linking.openURL(`${e.url}`)}
-            buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
+            buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor:'#dd4141' }}
             title='Read More...' />
         </Card>
       })}
@@ -57,6 +58,12 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: '#dd4141',
     fontWeight: 'bold'
+
+  },
+  titleWrapper: {
+    marginTop: 25,
+   marginRight:0,
+  //  marginRight:0
 
   },
 })

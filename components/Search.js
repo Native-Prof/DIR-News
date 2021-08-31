@@ -13,24 +13,12 @@ function Search() {
     try {
       const news = await fetch(`https://newsapi.org/v2/everything?q=${search}&apiKey=a39c18677ad046d7b17177486b4695ef&sortBy=popularity`)
       const row = await news.json();
-      console.log(row.articles);
       setData(row.articles)
-      // console.log(navigation.query);
     } catch (error) {
       console.log(error);
     }
 
   }
-
-  // React.useEffect(() => {
-  //   (async () => {
-
-  //     await fetchNews();
-
-
-  //   })()
-  // }, [search])
-
 
   const updateSearch = (search) => {
     setsearch(search)
@@ -45,7 +33,7 @@ function Search() {
         value={search}
 
       />
-      <Button title="Search" onPress={fetchNews} />
+      <Button title="Search" onPress={fetchNews}     buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0, backgroundColor:'#dd4141',marginTop:5,paddingTop:10,paddingLeft:25 ,paddingBottom:10,paddingRight:25, alignSelf:'center',borderRadius:2 }}/>
       {data.map((e) => {
 
         return <Card>
@@ -59,7 +47,7 @@ function Search() {
           <Button
             onPress={() => Linking.openURL(`${e.url}`)}
             buttonStyle={{ borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0 }}
-            title='Read More...' />
+            title='Read More...'/>
         </Card>
 
       })}
