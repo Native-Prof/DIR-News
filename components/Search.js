@@ -11,7 +11,7 @@ function Search() {
   // const [search, setquery] = React.useState("")
   const fetchNews = async () => {
     try {
-      const news = await fetch(`https://newsapi.org/v2/everything?q=${search}&apiKey=a39c18677ad046d7b17177486b4695ef&sortBy=popularity`)
+      const news = await fetch(`https://newsapi.org/v2/everything?q=${search}&apiKey=40f3f7aedd7a46b7942b8548e217c200&sortBy=popularity`)
       const row = await news.json();
       setData(row.articles)
     } catch (error) {

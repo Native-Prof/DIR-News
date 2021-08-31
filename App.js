@@ -6,7 +6,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import HomeScreen from './components/HomeScreen'
 import NewsCard from './components/NewsCard';
 import Search from './components/Search'
-import Test from './components/Test'
+import Weather from './components/Weather'
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +28,8 @@ export default function App() {
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{headerShown:false}}/>
 
         <Stack.Screen name="Search" component={Search} />
+        <Stack.Screen name="Weather" component={Weather} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
