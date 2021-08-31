@@ -4,7 +4,7 @@ import NewsCard from './NewsCard'
 import Feather from 'react-native-vector-icons/Fontisto';
 import Search from 'react-native-vector-icons/Feather';
 import { Button } from 'react-native-elements';
-
+import Weather from 'react-native-vector-icons/MaterialCommunityIcons'
 export default function HomeScreen({ navigation }) {
   const [query, setquery] = React.useState('love');
   const [image, setimage] = React.useState('https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg');
@@ -16,9 +16,16 @@ export default function HomeScreen({ navigation }) {
         <Image style={styles.headerLeft}
           source={require('./dir_news_logo2.png')}
         />
-        <Search style={styles.headerRight} name='search' size={24} color='#dd4141' title="Search"
+        <View style={styles.headerRight}>
+            <Weather style={styles.featherheaderRight} name='weather-cloudy' size={24} color='#dd4141' title="Search"
+          onPress={(event) => navigation.navigate("Weather")}
+        ></Weather>
+
+        <Search style={styles.featherheaderRight} name='search' size={24} color='#dd4141' title="Search"
           onPress={(event) => navigation.navigate("Search")}
         ></Search>
+        </View>
+
       </View>
       <ScrollView>
 
@@ -44,7 +51,7 @@ export default function HomeScreen({ navigation }) {
         </View>
 
         <View style={styles.buttons}>
-      
+
           <TouchableOpacity
             style={styles.button}
             onPress={(event) => {
@@ -123,19 +130,17 @@ const styles = StyleSheet.create({
   },
   imageAbsoluteWrapper: {
     position: 'absolute',
-    justifyContent:'center',
-    alignItems:'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   imageDis: {
-    alignSelf:'center',
-    justifyContent:'center',
-
-    // top: 100,
-    textAlign:'center',
-    backgroundColor:'#e6e1e1cf',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    backgroundColor: '#e6e1e1cf',
     width: '102%',
     height: 300,
-    marginLeft:12,
+    marginLeft: 12,
     borderRadius: Platform.OS === 'ios' ? 12 : 12
   },
 
@@ -161,7 +166,7 @@ const styles = StyleSheet.create({
   headerLeft: {
     width: '42%',
     height: 37,
-    paddingRight:20
+    paddingRight: 20
   },
 
   buttons: {
@@ -184,8 +189,15 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: '#dd4141'
   },
-  featherImage:{
-    paddingLeft:10,
-    paddingTop:10,
+  featherImage: {
+    paddingLeft: 10,
+    paddingTop: 10,
+  },
+
+  featherheaderRight:{
+    marginLeft:20
+  },
+  headerRight:{
+    flexDirection:'row'
   }
 })
